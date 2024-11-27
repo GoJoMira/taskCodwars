@@ -10,6 +10,17 @@
             "request": "launch",
             "mode": "auto",
             "program": "${fileDirname}"
+        },
+        {
+            "name": "Debug Tests",
+            "type": "go",
+            "request": "launch",
+            "mode": "test",
+            "program": "${workspaceFolder}/tests", // Укажите папку с тестами
+            "args": [],                      // Аргументы можно добавить, если необходимо
+            "env": {},                       // Переменные окружения, если нужны
+            "buildFlags": "-v",              // Показывает больше информации при запуске тестов
+            "showLog": true                  // Включает вывод логов для отладки
         }
     ]
 }
