@@ -50,14 +50,6 @@ func MaxProfit(prices []int) int {
 
 		now, end := prices[i], prices[v]
 
-		if v == len(prices) {
-			if now < end {
-				profit += end - now
-			} else {
-				continue
-			}
-		}
-
 		if now < end {
 			profit += end - now
 		} else {
