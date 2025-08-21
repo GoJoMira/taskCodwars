@@ -49,3 +49,12 @@ func TestMaxProfit_5(t *testing.T) {
 		t.Errorf("MaxProfit = %d; want %d", got, want)
 	}
 }
+
+func TestMaxProfit_6(t *testing.T) {
+	got := task.MaxProfit([]int{1})
+	want := 0
+
+	if got != want {
+		t.Errorf("MaxProfit = %d; want %d", got, want)
+	}
+}
