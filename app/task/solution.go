@@ -5,6 +5,16 @@ import (
 	"strings"
 )
 
+var keys []int
+
+func init() {
+	keys = make([]int, 0, len(nRim))
+	for k := range nRim {
+		keys = append(keys, k)
+	}
+	sort.Ints(keys)
+}
+
 // Алгоритм до 3999
 var nRim map[int]string = map[int]string{
 	1:     "I",
@@ -23,7 +33,7 @@ var nRim map[int]string = map[int]string{
 	10000: "0",
 }
 
-func getNRim(n int) string {
+func GetNRim(n int) string {
 	var result string
 
 	// TODO: Тут не должна быть генерация ключей
@@ -43,32 +53,44 @@ func getNRim(n int) string {
 	for k := 0; k < len(keys)-1; k++ {
 		if keys[k] < n && n < keys[k+1] {
 			result += nRim[keys[k]]
-			result += getNRim(n - keys[k])
+			result += GetNRim(n - keys[k])
 		}
 	}
 
 	return result
 }
 
-func splitNumber(n int) []int {
-	r := []int{}
-	for d := 1; n/d > 0; d *= 10 {
-		num := (n / d % 10) * d
-		r = append([]int{num}, r...)
+func getNRimBuilder(n int, sb *strings.Builder) {
+	if v := nRim[n]; v != "" {
+		sb.WriteString(v)
+		return
 	}
+	for k := 0; k < len(keys)-1; k++ {
+		if keys[k] < n && n < keys[k+1] {
+			sb.WriteString(nRim[keys[k]])
+			getNRimBuilder(n-keys[k], sb)
+			return
+		}
+	}
+}
+
+func splitNumber(n int) []int {
+	var r []int
+	for d := 1; n/d > 0; d *= 10 {
+		r = append(r, (n/d%10)*d)
+	}
+
+	for i, j := 0, len(r)-1; i < j; i, j = i+1, j-1 {
+		r[i], r[j] = r[j], r[i]
+	}
+
 	return r
 }
 
 func Solution(number int) string {
-	var result string
-
-	numbersList := splitNumber(number)
-
-	for _, n := range numbersList {
-		result += getNRim(n)
-	}
-
-	return result
+	var sb strings.Builder
+	getNRimBuilder(number, &sb)
+	return sb.String()
 }
 
 // Решение с CodeWars
