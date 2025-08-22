@@ -59,3 +59,9 @@ func TestSolution_6(t *testing.T) {
 		t.Errorf("Revrot(2263) = %v; want %v", got, want)
 	}
 }
+
+func BenchmarkSolution_6(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		_ = task.Solution(2263) // просто вызываем
+	}
+}
