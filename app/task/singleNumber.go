@@ -5,7 +5,7 @@ LeetCode Version 1
 Решение через map и уникальный ключ
 Runtime 6ms
 */
-func SingleNumber1(nums []int) int {
+func SingleNumber(nums []int) int {
 
 	if len(nums) == 1 {
 		return nums[0]
@@ -80,7 +80,7 @@ func init() {
 программа будет тратить мало памяти. В основном успользуется только в Docker
 */
 
-func SingleNumber(nums []int) int {
+func SingleNumber1(nums []int) int {
 
 	var uniqueNums int //
 
