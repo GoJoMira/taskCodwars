@@ -1,5 +1,7 @@
 package task
 
+// https://leetcode.com/explore/featured/card/top-interview-questions-easy/92/array/674/
+
 import "sort"
 
 func Intersect(nums1 []int, nums2 []int) []int {
