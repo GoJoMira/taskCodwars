@@ -14,7 +14,7 @@ func Intersect(nums1 []int, nums2 []int) []int {
 	}
 
 	var first, last []int
-	var result []int
+	result := make([]int, len(first))
 
 	if len(nums1) > len(nums2) {
 		first, last = nums1, nums2
@@ -22,8 +22,8 @@ func Intersect(nums1 []int, nums2 []int) []int {
 		first, last = nums2, nums1
 	}
 
-	indexFirstNumber := make(map[int]int)
-	indexlastNumber := make(map[int]int)
+	indexFirstNumber := make(map[int]int, len(first))
+	indexlastNumber := make(map[int]int, len(first))
 
 	for i, v := range first {
 	OuterLoop:
