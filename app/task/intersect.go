@@ -26,6 +26,7 @@ func Intersect(nums1 []int, nums2 []int) []int {
 	indexlastNumber := make(map[int]int)
 
 	for i, v := range first {
+	OuterLoop:
 		for i2, v2 := range last {
 
 			if v == v2 {
@@ -35,6 +36,7 @@ func Intersect(nums1 []int, nums2 []int) []int {
 					indexFirstNumber[i] = 0
 					indexlastNumber[i2] = 0
 					result = append(result, v)
+					break OuterLoop
 				} else {
 					continue
 				}
