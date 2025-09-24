@@ -26,6 +26,16 @@ func TestMoveZeroes_2(t *testing.T) {
 	}
 }
 
+func TestMoveZeroes_3(t *testing.T) {
+	got := []int{0, 1, 2, 3, 4}
+	task.MoveZeroes(got)
+	want := []int{1, 2, 3, 4, 0}
+
+	if !reflect.DeepEqual(got, want) {
+		t.Errorf("MoveZeroes = %v; want %v", got, want)
+	}
+}
+
 func BenchmarkMoveZeroes(b *testing.B) {
 	for i := 0; i < b.N; i++ {
 		got := []int{0, 1, 0, 3, 12}
