@@ -56,3 +56,6 @@ func BenchmarkIntersect_1(b *testing.B) {
 		_ = task.Intersect([]int{4, 5, 7, 8, 23423, 34, 23, 423, 42, 34, 234, 23, 42, 34, 234, 23, 423, 4, 234, 23, 56, 345, 6, 9}, []int{4, 4, 5, 6, 645, 45654, 3453, 24324, 23423, 4234, 234, 234, 234, 236, 9, 8, 567, 234, 234, 543, 543, 9})
 	}
 }
+
+// go test -run ^$ -bench ^BenchmarkIntersect_1$ -memprofile mem.prof
+//go tool pprof .\mem.prof
